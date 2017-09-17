@@ -1,0 +1,28 @@
+﻿@model GenericWeb.Models.Article
+@if (Model != null)
+{
+    @if (Model.Image != null)
+    {
+        <div class="row">
+            <div class="col-md-6">
+                <h2>@Model.Title</h2>
+                <div>@Html.Raw(Model.Content)</div>
+            </div>
+            <div class="col-md-6">
+                <div class="banner-content">
+                    <img src="~/images/Banners/@Model.Image.Name" />
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <h2>@Model.Title</h2>
+                <div>@Html.Raw(Model.Content)</div>
+            </div>
+        </div>
+
+    }
+}

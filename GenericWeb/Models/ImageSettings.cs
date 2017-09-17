@@ -20,7 +20,7 @@ namespace GenericWeb.Models
         /// This isn't in the site yet, but I would like to use this to make a seperate style
         /// of the website where a single image is the main image.
         /// </summary>
-        public IEnumerable<Image> Banners { get; set; }
+        public IEnumerable<Article> Banners { get; set; }
         /// <summary>
         /// When bundling a group of images this is how they will be used to know they are together
         /// 
@@ -39,11 +39,7 @@ namespace GenericWeb.Models
             if (Carousels?.Count() > 0)
                 image = Carousels.FirstOrDefault(x => x.Id == id);
             if (image != null)
-                return image;
-            if (Banners?.Count() > 0)
-                image = Banners.FirstOrDefault(x => x.Id == id);
-            if (image != null)
-                return image;
+                return image;           
             return image = Groups.Select(group => group.Images.Where(img => img.Id == id))?.FirstOrDefault()?.FirstOrDefault();
         }
     }

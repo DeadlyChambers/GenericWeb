@@ -40,5 +40,10 @@ namespace GenericWeb.Models
         /// Used by Article to know if they are going to display an image
         /// </summary>
         public int Id { get; set; }
+        /// <summary>
+        /// Any specific classes you want applied to the IMG tag.
+        /// </summary>
+        public string Class { get; set;}
+     
     }
 }

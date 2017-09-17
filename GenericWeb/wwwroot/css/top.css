@@ -1,17 +1,18 @@
-﻿.facebook {
+﻿body {
+    padding-top: 0 !important
+}
+
+.facebook {
     float: right;
     margin: 8px;
 }
 
 #galleria {
-    height: 550px
+    height: 498px
 }
 
 .top-bar {
     margin: 0 75px;
-}
-
-.logo-container {
 }
 
 .phone-container {
@@ -76,10 +77,15 @@ h2 {
     color: #225a9a;
 }
 
-@media (min-width: 768px) {
-    .logo-container {
+.banner-content {
+    padding: 15px;
+}
+
+    .banner-content img {
+        padding: 10px;
     }
 
+@media (min-width: 768px) {
     .navbar-fixed-top {
         top: unset;
         position: relative;

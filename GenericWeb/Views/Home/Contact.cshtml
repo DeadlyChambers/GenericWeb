@@ -1,10 +1,12 @@
 ﻿@model GenericWeb.Models.ApplicationSettings
-@{
-    ViewData["Title"] = "Contact";
-}
+
 <div class="container body-content">
-    <h2>@ViewData["Title"]</h2>
-    <h3>@ViewData["Message"]</h3>
+    @{ 
+        var banner = Model.Banners?.FirstOrDefault(x => x.Page == GenericWeb.Enums.Page.Contact);
+    }
+    @if (banner != null) {
+        @Html.Partial("_Banner", banner)
+    }
     <style>
         .address-name-underline {
             margin: 2px;
@@ -61,4 +63,4 @@
     }
 </div>
 
-@Html.Partial("_Body", new GenericWeb.Models.ArticleViewModel(Model.Articles, GenericWeb.Enums.Page.Contact, null, null))
+@Html.Partial("_Body", new GenericWeb.Models.ArticleViewModel(Model.Articles, GenericWeb.Enums.Page.Contact, null))

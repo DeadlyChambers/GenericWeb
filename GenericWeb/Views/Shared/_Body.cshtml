@@ -1,13 +1,7 @@
 ﻿@model GenericWeb.Models.ArticleViewModel
 <div class="container body-content">
-    @if (!string.IsNullOrEmpty(Model.Title))
-    {
-        <h2>@Model.Title</h2>
-    }
-    @if (!string.IsNullOrEmpty(Model.Message))
-    {
-        <h3>@Model.Message</h3>
-    }
+   
+   @Html.Partial("_Banner", Model.Article)
     <div class="row">
         @if (Model.Articles?.Count() > 0)
         {

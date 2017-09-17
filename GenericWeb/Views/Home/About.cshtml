@@ -1,4 +1,4 @@
 ﻿@model GenericWeb.Models.ApplicationSettings
 
 
-@Html.Partial("_Body", new GenericWeb.Models.ArticleViewModel(Model.Articles, GenericWeb.Enums.Page.About, "About", @ViewData["Message"]?.ToString()))
+@Html.Partial("_Body", new GenericWeb.Models.ArticleViewModel(Model.Articles, GenericWeb.Enums.Page.About, Model.Banners?.FirstOrDefault(x => x.Page == GenericWeb.Enums.Page.About)))

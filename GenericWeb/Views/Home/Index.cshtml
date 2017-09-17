@@ -1,7 +1,7 @@
 ﻿@model GenericWeb.Models.ApplicationSettings
 @if (Model.Images?.Carousels?.Count() > 0)
 {
-    
+    <link rel="stylesheet" href="~/lib/galleria/galleria.classic.css" />
     <div id="galleria">
         @foreach (var image in Model.Images?.Carousels)
         {
@@ -13,6 +13,17 @@
             </a>
         }
     </div>
+    @section Scripts{
+        <script src="~/lib/galleria/galleria-1.5.7.js"></script>
+        <script src="~/lib/galleria/galleria.classic.js"></script>
+        <script>
+            $(function () {
+                // Initialize Galleria
+                Galleria.run('#galleria');
+            });
+        </script>
+    }
 }
 
-@Html.Partial("_Body", new GenericWeb.Models.ArticleViewModel(Model.Articles, GenericWeb.Enums.Page.Index, null, null))
+@Html.Partial("_Body", new GenericWeb.Models.ArticleViewModel(Model.Articles, GenericWeb.Enums.Page.Index, null))
+

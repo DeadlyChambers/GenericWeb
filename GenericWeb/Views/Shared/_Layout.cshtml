@@ -16,7 +16,7 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
-    <link rel="stylesheet" href="~/lib/galleria/galleria.classic.css"/>
+    
     <link rel="stylesheet" href="~/lib/bootstrap/bootstrap-override.css" />
     <link rel="stylesheet" href="~/css/top.css" />
     <style>
@@ -53,14 +53,7 @@
        
         
     </environment>
-    <script src="~/lib/galleria/galleria-1.5.7.js"></script>
-    <script src="~/lib/galleria/galleria.classic.js"></script>
-    <script>
-            $(function () {
-                // Initialize Galleria
-                Galleria.run('#galleria');
-            });
-    </script>
+   
     @RenderSection("Scripts", required: false)
 </body>
 </html>
