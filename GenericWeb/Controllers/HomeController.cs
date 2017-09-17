@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using GenericWeb.Models;
+using System.Net.Http;
 
 namespace GenericWeb.Controllers
 {
@@ -46,6 +47,33 @@ namespace GenericWeb.Controllers
             SetDisplayFromAppSettings();
             return View();
         }
+
+        //public IActionResult SendEmail()
+        //{
+        //    var fromAddress = new MailAddress("from@gmail.com", "From Name");
+        //    var toAddress = new MailAddress("to@example.com", "To Name");
+        //    const string fromPassword = "fromPassword";
+        //    const string subject = "Subject";
+        //    const string body = "Body";
+
+        //    var smtp = new HttpClient
+        //    {
+        //        Host = "smtp.gmail.com",
+        //        Port = 587,
+        //        EnableSsl = true,
+        //        DeliveryMethod = SmtpDeliveryMethod.Network,
+        //        UseDefaultCredentials = false,
+        //        Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+        //    };
+        //    using (var message = new MailMessage(fromAddress, toAddress)
+        //    {
+        //        Subject = subject,
+        //        Body = body
+        //    })
+        //    {
+        //        smtp.Send(message);
+        //    }
+        //}
 
         private void SetDisplayFromAppSettings()
         {
