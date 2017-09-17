@@ -1,0 +1,8 @@
+﻿@media (min-width: 768px) {
+    .navbar-fixed-top {
+        top: unset;
+        position: relative;
+        margin-bottom: 0;
+    }
+}
+

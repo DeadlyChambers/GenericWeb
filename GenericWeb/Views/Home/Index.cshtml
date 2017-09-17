@@ -1,0 +1,18 @@
+﻿@model GenericWeb.Models.ApplicationSettings
+@if (Model.Images?.Carousels?.Count() > 0)
+{
+    
+    <div id="galleria">
+        @foreach (var image in Model.Images?.Carousels)
+        {
+            <a href="~/images/Carousel/@image.Name">
+                <img src="~/images/Carousel/@image.Name" ,
+                     data-big="~/images/Carousel/@image.Name"
+                     data-title="@image.DisplayName"
+                     data-description="@image.Description">
+            </a>
+        }
+    </div>
+}
+
+@Html.Partial("_Body", new GenericWeb.Models.ArticleViewModel(Model.Articles, GenericWeb.Enums.Page.Index, null, null))

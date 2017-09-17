@@ -1,0 +1,24 @@
+﻿@model GenericWeb.Models.ArticleViewModel
+<div class="container body-content">
+    @if (!string.IsNullOrEmpty(Model.Title))
+    {
+        <h2>@Model.Title</h2>
+    }
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <h3>@Model.Message</h3>
+    }
+    <div class="row">
+        @if (Model.Articles?.Count() > 0)
+        {
+            @foreach (var article in Model.Articles.Where(x => x.Page == Model.Page).OrderBy(x => x.DisplayOrder))
+            {
+                <div class="col-md-12">
+                    <h2>@article.Title</h2>
+                    @Html.Raw(article.Content)
+                </div>
+            }
+        }
+    </div>
+    @Html.Partial("_Footer")
+</div>

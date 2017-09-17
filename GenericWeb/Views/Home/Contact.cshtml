@@ -1,0 +1,64 @@
+﻿@model GenericWeb.Models.ApplicationSettings
+@{
+    ViewData["Title"] = "Contact";
+}
+<div class="container body-content">
+    <h2>@ViewData["Title"]</h2>
+    <h3>@ViewData["Message"]</h3>
+    <style>
+        .address-name-underline {
+            margin: 2px;
+            width: 175px;
+        }
+    </style>
+
+    @if (Model.Contacts?.Addresses?.Count() > 0)
+    {
+        @foreach (var address in Model.Contacts.Addresses)
+        {
+            <address class="adresses">
+                @if (address.Name?.Count() > 0)
+                {
+                    <h2>@address.Name</h2>
+                    <hr class="address-name-underline" />
+                }
+                @if (address.Line1?.Length > 0)
+                {
+                    <span class="address-line1">@address.Line1 </span> <br />
+                }
+                @if (address.Line2?.Length > 0)
+                {
+                    <span class="address-line2">@address.Line2 </span> <br />
+                }
+                @if (address.Line3?.Length > 0)
+                {
+                    <span class="address-line3">@address.Line3 </span> <br />
+                }
+                @if (address.Line4?.Length > 0)
+                {
+                    <span class="address-line4">@address.Line4 </span> <br />
+                }
+                @foreach (var phone in address.Phones)
+                {
+                    <span class="phone"><span class="phone-name">@phone.Name</span>: <a class="phone-number" href="tel:@phone.Number.Replace("-", "").Replace(".", "")">@phone.Number</a> </span><br />
+                    if (phone.Ext?.Length > 0)
+                    {
+                        <span class="phone-ext">@phone.Ext</span><br />
+
+                    }
+                }
+
+            </address>
+        }
+
+    }
+    @if (Model.Contacts?.Emails?.Count() > 0)
+    {
+        @foreach (var email in Model.Contacts.Emails)
+        {
+            <strong class="email-name">@email.DisplayName:</strong> <a class="email-address" href="mailto:@email.Address">@email.Address</a><br />
+        }
+    }
+</div>
+
+@Html.Partial("_Body", new GenericWeb.Models.ArticleViewModel(Model.Articles, GenericWeb.Enums.Page.Contact, null, null))
