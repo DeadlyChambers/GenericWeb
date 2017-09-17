@@ -10,5 +10,7 @@ namespace GenericWeb.Models
         public IEnumerable<Article> Articles { get; set; }
 
         public IEnumerable<Article> Banners { get; set; }
+
+        public EmailSettings Email { get; set; }
     }
 }

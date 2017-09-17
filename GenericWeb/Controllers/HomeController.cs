@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using GenericWeb.Models;
 using System.Net.Http;
+using System.Net.Mail;
+using System.Net;
 
 namespace GenericWeb.Controllers
 {
@@ -17,7 +19,7 @@ namespace GenericWeb.Controllers
         public HomeController(IOptions<ApplicationSettings> settings)
         {
             _applicationSettings = settings.Value;
-          
+
         }
 
         public IActionResult Index()
@@ -48,32 +50,41 @@ namespace GenericWeb.Controllers
             return View();
         }
 
-        //public IActionResult SendEmail()
-        //{
-        //    var fromAddress = new MailAddress("from@gmail.com", "From Name");
-        //    var toAddress = new MailAddress("to@example.com", "To Name");
-        //    const string fromPassword = "fromPassword";
-        //    const string subject = "Subject";
-        //    const string body = "Body";
+        public async Task<HttpResponseMessage> SendEmail(string fromEmail, string body)
+        {
+            var fromAddress = new MailAddress(_applicationSettings.Email.EmailAddress, _applicationSettings.CompanyName+" automated email");
+            var toAddress = new MailAddress(_applicationSettings.Email.EmailAddress, fromEmail);
 
-        //    var smtp = new HttpClient
-        //    {
-        //        Host = "smtp.gmail.com",
-        //        Port = 587,
-        //        EnableSsl = true,
-        //        DeliveryMethod = SmtpDeliveryMethod.Network,
-        //        UseDefaultCredentials = false,
-        //        Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-        //    };
-        //    using (var message = new MailMessage(fromAddress, toAddress)
-        //    {
-        //        Subject = subject,
-        //        Body = body
-        //    })
-        //    {
-        //        smtp.Send(message);
-        //    }
-        //}
+            try
+            {
+                using (var smtpClient = new SmtpClient
+                {
+                    Host = _applicationSettings.Email.SmtpHost,
+                    Port = _applicationSettings.Email.SmtpPort,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(fromAddress.Address, _applicationSettings.Email.Password)
+                })
+                {
+
+                    using (var message = new MailMessage(fromAddress, toAddress)
+                    {
+                        Subject = _applicationSettings.Email.Subject,
+                        Body = $"Email sent on behalf of {fromEmail} \r\r {body}"
+                    })
+
+                    {
+                        await smtpClient.SendMailAsync(message);
+                        return new HttpResponseMessage(HttpStatusCode.OK);
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+            }
+        }
 
         private void SetDisplayFromAppSettings()
         {
@@ -81,6 +92,7 @@ namespace GenericWeb.Controllers
             ViewData["Logo"] = _applicationSettings.Images?.Logos?.FirstOrDefault(x => x.ImageSize == Enums.ImageSize.Default).Name ?? "";
             ViewData["Facebook"] = _applicationSettings.Contacts?.Facebook;
             ViewData["Phone"] = _applicationSettings.Phone;
+            ViewData["EmailMessage"] = _applicationSettings.Email?.EmailRequestMessage;
         }
     }
 }

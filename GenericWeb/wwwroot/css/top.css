@@ -17,8 +17,12 @@
 
 .phone-container {
     float: right;
-    margin-top: 30px;
+    margin-top: 8px;
 }
+
+    .phone-container > button {
+        float: right;
+    }
 
 .phone-main {
     font-size: 28px;
@@ -34,13 +38,22 @@
     display: none;
 }
 
-    .phone-conatiner-sm .phone-number {
-        color: white;
-    }
+.send-email-container-sm {
+    display: none;
+}
+
+.email-button {
+    margin-top: 8px;
+}
+
+.phone-conatiner-sm .phone-number {
+    color: white;
+}
 
 .facebook li {
     list-style-type: none;
 }
+
 
 .navbar {
     background-color: #d0d0d0;
@@ -85,6 +98,28 @@ h2 {
         padding: 10px;
     }
 
+.has-error {
+    color: #ec4b4b;
+}
+
+    .has-error > input {
+        border: 1px #ec4b4b solid;
+    }
+
+.error-text {
+    display: none;
+}
+
+.has-error > .error-text {
+    color: #ec4b4b;
+    display: inline;
+    margin-left: 10px;
+}
+
+.full {
+    width: 100%;
+}
+
 @media (min-width: 768px) {
     .navbar-fixed-top {
         top: unset;
@@ -100,11 +135,11 @@ h2 {
 
     .phone-conatiner-sm {
         display: inline-flex;
-        padding-top: 16px;
         margin: 0;
-        margin: 25px;
         padding-right: 10px;
     }
+
+
 
     .logo-container {
         float: none !important;
@@ -122,11 +157,28 @@ h2 {
     }
 
     .body-content {
-        margin-top: 100px;
+        padding-top: 0px;
+    }
+
+    .phone-main {
+        margin-top: 30px;
+    }
+
+    .phone-container > button {
+        display: none;
     }
 
     .galleria-theme-classic {
         border-top: 2px black solid;
+    }
+
+    .send-email-container-sm > button {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .send-email-container-sm {
+        display: inline-flex;
     }
 
     .navbar {

@@ -1,0 +1,27 @@
+﻿
+    <div class="modal fade" id="emailModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Submit A Request</h4>
+                </div>
+                <div id="emailForm" class="modal-body">
+                    <p>@ViewData["EmailMessage"]</p>
+                    <div class="input-group full">
+                        <label for="email">Your Email</label><span class="error-text">The email needs to be properly formatted</span>
+                        <input id="email" type="email" class="form-control" data-req/>
+                    </div>
+                    <br/>
+                    <div class="input-group full">
+                        <label for="body">Body</label><span class="error-text">The body is required</span>
+                        <textarea id="body" class="form-control" data-req placeholder="Body"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="sendRequestButton" onclick="sendRequest('@Url.Content("~/Home/SendEmail")');" type="button" class="btn btn-primary">Submit Request</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->   

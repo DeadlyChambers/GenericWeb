@@ -7,7 +7,7 @@
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-     
+
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -15,17 +15,17 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
-    
+
     <link rel="stylesheet" href="~/lib/bootstrap/bootstrap-override.css" />
     <link rel="stylesheet" href="~/css/top.css" />
-    
+
 </head>
 <body>
-   
-   @Html.Partial("_Navbar")
-        @RenderBody()
-       
-    
+
+    @Html.Partial("_Navbar")
+    @RenderBody()
+
+
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -46,10 +46,12 @@
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
-       
-        
+
+
     </environment>
-   
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    @Html.Partial("_EmailModal")
     @RenderSection("Scripts", required: false)
-</body>
+   </body>
 </html>
