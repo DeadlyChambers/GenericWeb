@@ -139,7 +139,9 @@ h2 {
         padding-right: 10px;
     }
 
-
+    .body-content {
+        padding-top: 0 !important;
+    }
 
     .logo-container {
         float: none !important;
@@ -157,7 +159,7 @@ h2 {
     }
 
     .body-content {
-        padding-top: 0px;
+        padding-top: 100px;
     }
 
     .phone-main {

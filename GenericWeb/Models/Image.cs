@@ -9,6 +9,12 @@ namespace GenericWeb.Models
         /// </summary>
         public string Name { get; set; }
         /// <summary>
+        /// This will be the name of the image used in view as the src of the <img></img>
+        /// except this will be a smaller version of the same pic try to cap this at 300px
+        /// Example Logo.png
+        /// </summary>
+        public string NameSmall { get; set; }
+        /// <summary>
         /// Description will be displayed with the image depending
         /// on how the image is being used in the view
         /// </summary>
